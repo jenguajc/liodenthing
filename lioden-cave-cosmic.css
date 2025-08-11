@@ -1,0 +1,172 @@
+/* ===== Lioden Cosmic Night – by Juno$ ===== */
+:root{
+  --bg-image: url("REPLACE_WITH_YOUR_IMAGE_URL");
+  --glass: rgba(10,18,40,.6);
+  --glass-strong: rgba(10,18,40,.75);
+  --ink: #e9f0ff;
+  --muted: #b7c4ff;
+  --accent: #a7b5ff;
+  --accent-2: #ffb7df;
+  --link: #cfe0ff;
+  --ring: rgba(255,255,255,.25);
+  --radius: 16px;
+  --blur: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Background */
+html, body{
+  height:100%;
+}
+body{
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--ink);
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  text-shadow: 0 1px 2px rgba(0,0,0,.4);
+}
+
+/* Generic containers */
+#main, .container, .content, .table, .feature, .alert, .sidebar, .top, .bottom, .news, .box, .feature, #footer, #header, #sHeader, .breadcrumb, .cave-grid, .mound-grid{
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Glass wrapper around main content */
+#content, .content, #main{
+  background: var(--glass-strong) !important;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+/* Top bar / header */
+#header, #topbar, .navbar, .breadcrumb{
+  background: var(--glass) !important;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px 12px;
+}
+
+/* Links & text */
+a{ color: var(--link) !important; }
+a:hover{ color: #ffffff !important; text-decoration: underline; }
+
+/* Headings */
+h1,h2,h3,h4{
+  color:#ffffff;
+  letter-spacing:.5px;
+  text-shadow: 0 2px 10px rgba(167,181,255,.25);
+}
+
+/* Tables */
+table{
+  width:100%;
+  border-collapse: collapse !important;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background: rgba(6,12,30,.6);
+}
+th, td{
+  padding: 10px 12px !important;
+  border-bottom: 1px solid rgba(255,255,255,.06) !important;
+  color: var(--ink) !important;
+}
+thead th{
+  background: rgba(15,28,60,.7);
+  color:#fff;
+}
+tbody tr:hover{
+  background: rgba(255,255,255,.04);
+}
+
+/* Buttons & inputs */
+button, .button, input[type=submit], input[type=button], .btn{
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border: 0 !important;
+  color: #0a0f1f !important;
+  font-weight: 700;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 16px rgba(167,181,255,.35);
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+button:hover, .button:hover, input[type=submit]:hover, .btn:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 10px 22px rgba(255,183,223,.35);
+}
+input, select, textarea{
+  background: rgba(255,255,255,.06) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--ring) !important;
+  border-radius: 10px !important;
+}
+
+/* Cards / modules */
+.box, .feature, .alert, .module, .panel{
+  background: rgba(10,18,40,.62) !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow);
+}
+
+/* Cave & Mound thumbnails (bigger, cleaner) */
+.cave-grid .cave, .mound-grid .mound, .den-item, .territory, .lionItem{
+  background: rgba(10,18,40,.62) !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* Footer */
+#footer{
+  background: rgba(0,0,0,.35) !important;
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+/* Subtle shimmer divider for sections */
+.hr, hr{
+  border:0;
+  height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  margin: 18px 0;
+}
+
+/* Badges / small pills */
+.badge, .label, .tag{
+  background: rgba(255,255,255,.12) !important;
+  color:#fff !important;
+  border-radius: 999px !important;
+  border: 0 !important;
+}
+
+/* Optional: soft star overlay (very light) */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
+    radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 2px 2px, 3px 3px;
+  background-position: 0 0, 20px 20px;
+  opacity:.2;
+}
+
+/* Reduce harsh borders that some pages inject */
+*{
+  border-color: rgba(255,255,255,.08) !important;
+}
