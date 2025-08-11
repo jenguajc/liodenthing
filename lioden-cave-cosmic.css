@@ -1,23 +1,17 @@
 :root{
-  /* IMAGE */
   --bg-image: url("https://i.imgur.com/k9YQ0nG.jpeg");
-
-  /* COLORS */
   --ink: #eaf1ff;
   --muted: #b7c4ff;
   --link: #cfe0ff;
   --accent: #a7b5ff;
   --accent-2: #ffb7df;
-
-  /* SURFACES */
-  --glass: rgba(12, 20, 44, .56);
-  --glass-strong: rgba(12, 20, 44, .74);
+  /* darker glass */
+  --glass: rgba(10, 16, 36, 0.66);
+  --glass-strong: rgba(8, 12, 28, 0.82);
   --ring: rgba(255,255,255,.18);
-
-  /* FX */
   --blur: 12px;
   --radius: 16px;
-  --shadow: 0 10px 30px rgba(0,0,0,.45);
+  --shadow: 0 10px 30px rgba(0,0,0,.55);
 }
 
 /* Base + Background */
@@ -33,14 +27,13 @@ body{
     var(--bg-image) center / cover fixed no-repeat;
 }
 
-/* Subtle star layers */
+/* Star layers */
 body::before,
 body::after{
   content:"";
   position: fixed; inset:0; pointer-events:none;
 }
 body::before{
-  /* small stars */
   background-image:
     radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px),
     radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
@@ -50,7 +43,6 @@ body::before{
 }
 @keyframes twinkle { 0%,100%{opacity:.15} 50%{opacity:.28} }
 body::after{
-  /* twinkling veil */
   background-image:
     radial-gradient(2px 2px at 15% 30%, rgba(255,255,255,.55), transparent 60%),
     radial-gradient(2px 2px at 70% 10%, rgba(255,255,255,.45), transparent 60%),
@@ -60,7 +52,7 @@ body::after{
   opacity:.16;
 }
 
-/* Remove heavy site backgrounds/borders */
+/* Remove default backgrounds */
 #main, .container, .content, .table, .feature, .alert, .sidebar, .top, .bottom, .news, .box, #footer, #header, #sHeader, .breadcrumb{
   background: none !important;
   border: 0 !important;
@@ -102,7 +94,7 @@ table{
   overflow: hidden;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  background: rgba(7, 14, 34, .62);
+  background: rgba(5, 10, 25, .72);
 }
 th, td{
   padding: 10px 12px !important;
@@ -110,7 +102,7 @@ th, td{
   color: var(--ink) !important;
 }
 thead th{
-  background: rgba(15,28,60,.7);
+  background: rgba(15,28,60,.75);
   color:#fff;
 }
 tbody tr:hover{ background: rgba(255,255,255,.04); }
@@ -141,7 +133,7 @@ input, select, textarea{
 
 /* Cards / modules */
 .box, .feature, .alert, .module, .panel{
-  background: rgba(12, 20, 44, .62) !important;
+  background: rgba(8, 12, 28, .82) !important;
   border: 1px solid rgba(255,255,255,.08) !important;
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow);
@@ -149,7 +141,7 @@ input, select, textarea{
 
 /* Cave & Mound cards */
 .cave-grid .cave, .mound-grid .mound, .den-item, .territory, .lionItem{
-  background: rgba(12, 20, 44, .62) !important;
+  background: rgba(8, 12, 28, .82) !important;
   border-radius: 14px !important;
   border: 1px solid rgba(255,255,255,.08) !important;
   overflow: hidden;
@@ -178,12 +170,12 @@ hr, .hr{
 
 /* Footer */
 #footer{
-  background: rgba(0,0,0,.35) !important;
+  background: rgba(0,0,0,.45) !important;
   border-radius: var(--radius);
   color: var(--muted);
 }
 
-/* Scrollbar (Chromium) */
+/* Scrollbar */
 *::-webkit-scrollbar{ height:12px; width:12px; }
 *::-webkit-scrollbar-thumb{
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -191,5 +183,34 @@ hr, .hr{
 }
 *::-webkit-scrollbar-track{ background: rgba(0,0,0,.15); border-radius: 999px; }
 
-/* Make stray borders gentler */
+/* Reduce harsh borders */
 *{ border-color: rgba(255,255,255,.08) !important; }
+
+/* ==== PATCH: force main column & alerts ==== */
+html, body, #page, #wrapper, #footerbg { background: transparent !important; }
+
+#main > .container,
+#main > .container > .content,
+.container.main,
+.content,
+.main,
+.cave-container,
+#lion, #cave, #mound, #den, #territory {
+  background: var(--glass-strong) !important;
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 0 !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.alert, .alert-success, .alert-info, .alert-warning, .alert-danger {
+  background: rgba(255,255,255,.10) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--ring) !important;
+  border-radius: 12px !important;
+}
+
+.breadcrumb, .navbar, #header, #topbar {
+  background: var(--glass) !important;
+}
